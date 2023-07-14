@@ -8,7 +8,8 @@ import cn.rich.lottery.rpc.IActivityBooth;
 import cn.rich.lottery.rpc.dto.ActivityDto;
 import cn.rich.lottery.rpc.req.ActivityReq;
 import cn.rich.lottery.rpc.res.ActivityRes;
-import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Service;
 
 import javax.annotation.Resource;
 
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
  * @description:
  */
 @Service
+@Slf4j
 public class ActivityBooth implements IActivityBooth {
 
     @Resource
@@ -26,15 +28,17 @@ public class ActivityBooth implements IActivityBooth {
     @Override
     public ActivityRes queryActivityById(ActivityReq activityReq) {
         Activity activity = activityDao.queryActivityById(activityReq.getActivityId());
+        log.info("activityReq" + activityReq.toString());
 
         ActivityDto activityDto = new ActivityDto();
-        activityDto.builder().activityId(activity.getActivityId())
-                .activityName(activity.getActivityName())
-                .activityDesc(activity.getActivityDesc())
-                .beginDateTime(activity.getBeginDateTime())
-                .endDateTime(activity.getEndDateTime())
-                .stockCount(activity.getStockCount())
-                .takeCount(activity.getTakeCount()).build();
+        activityDto.setActivityId(activity.getActivityId());
+        activityDto.setActivityName(activity.getActivityName());
+        activityDto.setActivityDesc(activity.getActivityDesc());
+        activityDto.setBeginDateTime(activity.getBeginDateTime());
+        activityDto.setEndDateTime(activity.getEndDateTime());
+        activityDto.setStockCount(activity.getStockCount());
+        activityDto.setTakeCount(activity.getTakeCount());
+        log.info("activityDto" + activityDto.toString());
         return new ActivityRes(new Result(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo()), activityDto);
     }
 }

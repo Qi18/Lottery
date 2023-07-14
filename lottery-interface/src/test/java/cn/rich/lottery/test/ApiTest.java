@@ -2,7 +2,9 @@ package cn.rich.lottery.test;
 
 import cn.rich.lottery.infrastructure.dao.IActivityDao;
 import cn.rich.lottery.infrastructure.po.Activity;
+import cn.rich.lottery.rpc.IActivityBooth;
 import com.alibaba.fastjson.JSON;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.junit.runner.RunWith;
@@ -27,24 +29,26 @@ public class ApiTest {
     @Resource
     IActivityDao activityDao;
 
+
+
     @Test
     public void test_insert() {
         Activity activity = new Activity();
-        activity.setActivityId(100001L);
-        activity.setActivityName("测试活动");
+        activity.setActivityId(100003L);
+        activity.setActivityName("测试");
         activity.setActivityDesc("仅用于插入数据测试");
         activity.setBeginDateTime(new Date());
         activity.setEndDateTime(new Date());
         activity.setStockCount(100);
         activity.setTakeCount(10);
         activity.setState(0);
-        activity.setCreator("xiaofuge");
+        activity.setCreator("rich");
         activityDao.insert(activity);
     }
 
     @Test
     public void test_select() {
-        Activity activity = activityDao.queryActivityById(100002L);
+        Activity activity = activityDao.queryActivityById(100003L);
         logger.info("测试：{}", JSON.toJSONString(activity));
     }
 
