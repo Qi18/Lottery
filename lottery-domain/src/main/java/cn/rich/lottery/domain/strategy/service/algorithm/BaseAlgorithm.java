@@ -7,4 +7,6 @@ package cn.rich.lottery.domain.strategy.service.algorithm;
  */
 
 public abstract class BaseAlgorithm implements IDrawAlgorithm {
+
+
 }

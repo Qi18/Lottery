@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface IAwardDao {
 
-    Award queryAwardInfo(String awardId);
+    Award queryAwardInfo(Long awardId);
 }
 
