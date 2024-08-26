@@ -47,7 +47,7 @@ public interface IDrawAlgorithm {
      * @param excludeAwardIds 排除掉已经不能作为抽奖的奖品ID，留给风控和空库存使用
      * @return 中奖结果
      */
-    String randomDraw(Long strategyId, List<Long> excludeAwardIds);
+    Long randomDraw(Long strategyId, List<Long> excludeAwardIds);
 
 }
 

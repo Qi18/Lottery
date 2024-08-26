@@ -19,13 +19,13 @@ import java.math.BigDecimal;
 @Setter
 public class StrategyDetail {
     // 自增ID
-    private String id;
+    private Long id;
 
     // 策略ID
     private Long strategyId;
 
     // 奖品ID
-    private String awardId;
+    private Long awardId;
 
     // 奖品数量
     private String awardCount;

@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class DrawReq {
     // 用户ID
-    private String uId;
+    private Long uId;
 
     // 策略ID
     private Long strategyId;
